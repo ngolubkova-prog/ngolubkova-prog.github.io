@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+<title>Вход</title>
+<style>
+:root{--ink:#4b3345;--muted:#8b7284;--pink:#f7c8dc;--pink2:#fce3ee;--berry:#9d5577;--dark:#73405a}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:20px;font-family:Inter,ui-rounded,"SF Pro Rounded","Segoe UI",system-ui,-apple-system,sans-serif;color:var(--ink);background:radial-gradient(circle at 20% 10%,rgba(247,200,220,.9),transparent 35%),radial-gradient(circle at 85% 80%,rgba(216,201,242,.8),transparent 34%),#fff8fb}.box{width:min(430px,100%);padding:34px;border-radius:30px;background:rgba(255,255,255,.9);box-shadow:0 24px 70px rgba(107,66,89,.18);text-align:center;border:1px solid rgba(157,85,119,.15)}.rat{font-size:64px;margin-bottom:8px}.tag{font-size:12px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:var(--berry)}h1{font-size:34px;margin:8px 0 8px;letter-spacing:-.04em}p{color:var(--muted);line-height:1.5;margin:0 0 22px}.row{display:flex;gap:10px}.code{flex:1;min-width:0;border:1px solid #ead8e3;background:#fff;border-radius:16px;padding:14px 16px;font-size:20px;letter-spacing:.18em;text-align:center;color:var(--ink);outline:none}.code:focus{border-color:var(--pink);box-shadow:0 0 0 4px rgba(247,200,220,.28)}button{border:0;border-radius:16px;padding:0 18px;background:var(--berry);color:#fff;font-weight:850;cursor:pointer}button:hover{background:var(--dark)}.error{min-height:22px;margin-top:14px;color:#a44f67;font-size:14px;font-weight:700}.shake{animation:shake .25s linear}@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-7px)}75%{transform:translateX(7px)}}
+</style>
+</head>
+<body>
+<div class="box" id="box">
+  <div class="rat">🐀</div>
+  <div class="tag">private rats only</div>
+  <h1>Вход</h1>
+  <p>Введите четырёхзначный код, чтобы открыть страницу.</p>
+  <form id="form" class="row">
+    <input id="code" class="code" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="4" autocomplete="off" aria-label="Код доступа" autofocus>
+    <button type="submit">Войти</button>
+  </form>
+  <div class="error" id="error"></div>
+</div>
+<script>
+const target='r4t-7v2c-9n6p.html';
+if(sessionStorage.getItem('korosty_access')==='yes') location.replace(target);
+const form=document.getElementById('form'), code=document.getElementById('code'), error=document.getElementById('error'), box=document.getElementById('box');
+form.addEventListener('submit',e=>{e.preventDefault();if(code.value==='2017'){sessionStorage.setItem('korosty_access','yes');location.replace(target)}else{error.textContent='Код не подошёл 🐾';box.classList.remove('shake');void box.offsetWidth;box.classList.add('shake');code.select()}});
+</script>
+</body>
+</html>
